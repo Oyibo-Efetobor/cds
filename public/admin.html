@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin · CDS Attendance</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="ambient-orb orb-a"></div>
+  <div class="ambient-orb orb-b"></div>
+  <div class="ambient-orb orb-c"></div>
+
+  <div class="page">
+    <main class="panel">
+      <section id="adminAuthSection" class="panel-card card-surface">
+        <div class="section-row">
+          <div>
+            <p class="section-label">Sign in securely</p>
+            <h3 class="section-heading">Admin sign-in</h3>
+            <p class="section-text">Use your admin credentials to unlock the session builder.</p>
+          </div>
+        </div>
+
+        <div class="form-grid" style="margin-top:20px;">
+          <div>
+            <label class="label" for="adminEmail">Admin Email</label>
+            <input id="adminEmail" class="input" type="email" placeholder="Enter admin email" />
+          </div>
+          <div>
+            <label class="label" for="adminPassword">Admin Password</label>
+            <input id="adminPassword" class="input" type="password" placeholder="Enter admin password" />
+          </div>
+        </div>
+
+        <div class="panel-actions" style="margin-top:22px;">
+          <button id="unlockAdmin" class="button">Unlock Admin</button>
+        </div>
+        <div id="authMessage" class="notice" style="display:none;"></div>
+      </section>
+
+      <section id="adminPanel" class="admin-workspace" style="display:none;">
+        <div class="grid-2">
+          <section class="panel-card card-surface">
+            <p class="section-label">Session builder</p>
+            <h3 class="section-heading">Create a new session</h3>
+            <p class="section-text">Define the event details and automatically use your current location to lock the QR code to this venue.</p>
+            <div class="form-grid" style="margin-top:20px;">
+              <div>
+                <label class="label" for="meetingName">Meeting Name</label>
+                <input id="meetingName" class="input" type="text" placeholder="Session title" />
+              </div>
+              <div>
+                <label class="label" for="meetingDate">Meeting Date</label>
+                <input id="meetingDate" class="input" type="date" />
+              </div>
+              <div>
+                <label class="label" for="venueRadius">Radius (meters)</label>
+                <input id="venueRadius" class="input" type="number" value="120" />
+              </div>
+            </div>
+
+            <div class="panel-actions" style="margin-top:20px;">
+              <button id="saveSession" class="button">Create QR link</button>
+              <button id="refreshSessions" class="button-secondary">Refresh sessions</button>
+            </div>
+            <div id="adminMessage" class="notice" style="display:none;"></div>
+          </section>
+
+          <section class="panel-card card-surface">
+            <p class="section-label">Active sessions</p>
+            <h3 class="section-heading">Recent sessions</h3>
+            <p class="section-text">View sessions and select one to generate the QR link or inspect attendance.</p>
+            <div id="sessionsList" class="table-wrapper" style="margin-top:18px;"></div>
+          </section>
+        </div>
+
+        <section id="sessionInfo" class="panel-card card-surface" style="display:none; margin-top:24px;">
+          <div class="section-row">
+            <div>
+              <p class="section-label">Session QR link</p>
+              <h3 class="section-heading">Share this scan link</h3>
+            </div>
+            <button id="printQr" class="button-secondary">Print QR</button>
+          </div>
+          <div class="notice" id="scanLinkArea"></div>
+          <canvas id="qrCanvas" class="qr-canvas"></canvas>
+          <div class="panel-actions" style="margin-top:18px;">
+            <button id="copyLink" class="button-secondary">Copy scan link</button>
+          </div>
+        </section>
+
+        <section class="panel-card card-surface" style="margin-top:24px;">
+          <div class="section-row">
+            <div>
+              <p class="section-label">Attendance logs</p>
+              <h3 class="section-heading">Verified check-ins</h3>
+            </div>
+            <button id="exportAttendance" class="button-secondary">Export Excel</button>
+          </div>
+          <div id="attendanceList" class="table-wrapper"><p class="small-text">Select a session to review verified attendance.</p></div>
+        </section>
+      </section>
+
+      <div class="panel-actions" style="justify-content:flex-end; margin-top:18px;">
+        <button id="logoutAdmin" class="button-secondary" style="display:none;" data-logout>Sign out</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script src="/admin.js"></script>
+</body>
+</html>

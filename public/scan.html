@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check In · CDS Attendance</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="ambient-orb orb-a"></div>
+  <div class="ambient-orb orb-b"></div>
+  <div class="ambient-orb orb-c"></div>
+
+  <div class="page">
+    <main class="panel">
+      <section class="panel-card card-surface">
+        <div class="form-grid">
+          <div>
+            <label class="label" for="fullName">Full Name</label>
+            <input id="fullName" class="input" type="text" placeholder="Your full name" />
+          </div>
+          <div>
+            <label class="label" for="stateCode">State Code</label>
+            <input id="stateCode" class="input" type="text" placeholder="State code" />
+          </div>
+          <div>
+            <label class="label" for="phone">Phone</label>
+            <input id="phone" class="input" type="tel" placeholder="Phone number" />
+          </div>
+        </div>
+
+        <div class="panel-actions" style="margin-top:24px;">
+          <button id="submitAttendance" class="button">Submit Attendance</button>
+        </div>
+
+        <div id="statusMessage" class="notice" style="display:none; margin-top:18px;"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="validationOverlay" class="validation-overlay" style="display:none;">
+    <div class="validation-container" id="validationContainer">
+      <div class="validation-icon" id="validationIcon">⏳</div>
+      <div class="validation-copy">
+        <div class="validation-title" id="validationTitle">Checking in</div>
+        <div class="validation-detail" id="validationDetail">Please wait while we verify your attendance.</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/scan.js"></script>
+</body>
+</html>

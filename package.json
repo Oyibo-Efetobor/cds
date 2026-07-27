@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "vercel-build": "node -e \"console.log('build complete')\""
   },
   "dependencies": {
     "@supabase/server": "^1.4.1",
